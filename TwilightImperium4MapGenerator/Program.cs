@@ -1,5 +1,10 @@
 ﻿using TwilightImperium4MapGenerator;
 
+Console.WriteLine("*******************");
+Console.WriteLine("****** All Systems");
+Console.WriteLine("*******************");
+
+var spacingSystems = SystemFactory.GetSpacingSystems();
 var planetarySystems = SystemFactory.GetPlanetarySystems();
 planetarySystems.Sort();
 
@@ -7,7 +12,23 @@ foreach (var system in planetarySystems)
     Console.WriteLine("{0} {1} - {2}", system.GetValue().ToString("0.000"), system.Id, system.GetName());
 
 
-var spacingSystems = SystemFactory.GetSpacingSystems();
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("************************");
+Console.WriteLine("****** Starting Sectors");
+Console.WriteLine("************************");
 
-foreach (var system in spacingSystems)
-    Console.WriteLine("{0} - {1}", system.Id, system.GetName());
+var sectors = GalaxyFactory.Get8PlayerGalaxy(planetarySystems, spacingSystems);
+
+int i = 0;
+foreach (var sector in sectors)
+{
+    i++;
+
+    Console.WriteLine("");
+    Console.WriteLine("** Player {0} - Value {1}", i.ToString(), sector.GetValue());
+    Console.WriteLine();
+
+    foreach (var system in sector.Systems)
+        Console.WriteLine("{0} {1} - {2}", system.GetValue().ToString("0.000"), system.Id, system.GetName());
+}

@@ -8,12 +8,20 @@ namespace TwilightImperium4MapGenerator.Models
 {
     internal class Sector
     {
-        public IEnumerable<ISystem> systems { get; set; }
-        public double Value { get; set; }
+        public List<ISystem> Systems { get; set; }
 
-        public void PopulateSector(IEnumerable<ISystem> planetarySystems, IEnumerable<ISystem> spacingSystems)
+        public Sector()
         {
+            Systems = new List<ISystem>();
+        }
 
+        public double GetValue()
+        {
+            var value = 0.0;
+            foreach (var system in Systems)
+                value += system.GetValue();
+
+            return value;
         }
     }
 }

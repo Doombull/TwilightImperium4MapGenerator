@@ -9,9 +9,9 @@ namespace TwilightImperium4MapGenerator
 {
     internal static class SystemFactory
     {
-        public static List<ISystem> GetPlanetarySystems()
+        public static List<PlanetarySystem> GetPlanetarySystems()
         {
-            List<ISystem> list = new List<ISystem>(new ISystem[]
+            var list = new List<PlanetarySystem>(new PlanetarySystem[]
             {
                 new PlanetarySystem(19, new Planet[]
                 {

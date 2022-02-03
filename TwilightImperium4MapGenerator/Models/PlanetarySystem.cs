@@ -36,7 +36,10 @@ namespace TwilightImperium4MapGenerator.Models
         public double GetValue()
         {
             if (value is null)
+            {
                 value = valuator.GetValue(Planets);
+                value += Random.Next() / 100;
+            }
 
             return value.Value;
         }
