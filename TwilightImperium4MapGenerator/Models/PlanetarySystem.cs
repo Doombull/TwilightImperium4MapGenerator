@@ -43,6 +43,7 @@ namespace TwilightImperium4MapGenerator.Models
 
             return value.Value;
         }
+
         public int CompareTo(ISystem? other)
         {
             if (other == null)

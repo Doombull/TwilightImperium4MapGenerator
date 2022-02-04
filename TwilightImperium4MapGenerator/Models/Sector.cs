@@ -23,5 +23,18 @@ namespace TwilightImperium4MapGenerator.Models
 
             return value;
         }
+
+        public int GetResources()
+        {
+            var resources = 0;
+            foreach (var system in Systems)
+            {
+                if (system is PlanetarySystem)
+                    foreach (var planet in ((PlanetarySystem)system).Planets)
+                        resources += planet.Resource;
+            }
+
+            return resources;
+        }
     }
 }

@@ -198,7 +198,7 @@ namespace TwilightImperium4MapGenerator
             List<ISystem> list = new List<ISystem>(new ISystem[]
             {
                 new EmptySystem(39),
-                new EmptySystem(39),
+                new EmptySystem(40),
                 new AnomalySystem(41, "Gravity Rift"),
                 new AnomalySystem(42, "Nebula"),
                 new AnomalySystem(43, "Supernova"),
