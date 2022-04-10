@@ -45,6 +45,12 @@ while (settings is null)
     planetarySystems.Sort();
 
     settings = GalaxyFactory.Get8PlayerGalaxy(planetarySystems, spacingSystems);
+
+    if (settings is null)
+    {
+        Console.WriteLine("Not enough resources, trying again...");
+        Console.WriteLine();
+    }
 }
 
 Console.WriteLine("https://keeganw.github.io/ti4" + settings);
