@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace TwilightImperium4MapGenerator
 {
     internal static class GalaxyFactory
     {
-        public static string? Get8PlayerGalaxy(List<PlanetarySystem> planetarySystems, List<ISystem> spacingSystems)
+        public static Galaxy? Get8PlayerGalaxy(List<PlanetarySystem> planetarySystems, List<ISystem> spacingSystems)
         {
             //Pull out the 8 high value planets
             var highValueSystems = new List<ISystem>();
@@ -52,6 +53,11 @@ namespace TwilightImperium4MapGenerator
 
             //Randomise each sectors starting position
             sectors.Shuffle();
+            var galaxy = new Galaxy();
+            galaxy.Sectors = sectors;
+
+            var serialized = JsonConvert.SerializeObject(sectors);
+            galaxy.Sectors = JsonConvert.DeserializeObject<List<Sector>>(serialized);
 
             //Add in the spacing systems
             for (int i = 0; i < 8; i++)
@@ -140,7 +146,8 @@ namespace TwilightImperium4MapGenerator
             sb.Append(GetNextSystemId(sectors[7].Systems));
             sb.Append(GetNextSystemId(sectors[0].Systems));
 
-            return sb.ToString();
+            galaxy.Link = sb.ToString();
+            return galaxy;
         }
         public static string? Get6PlayerGalaxy(List<PlanetarySystem> planetarySystems, List<ISystem> spacingSystems)
         {

@@ -195,7 +195,7 @@ namespace TwilightImperium4MapGenerator
 
         public static List<ISystem> GetSpacingSystems()
         {
-            List<ISystem> list = new List<ISystem>(new ISystem[]
+            List<ISystem> list = new(new ISystem[]
             {
                 new EmptySystem(39),
                 new EmptySystem(40),

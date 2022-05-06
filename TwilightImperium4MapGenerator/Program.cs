@@ -1,4 +1,5 @@
 ﻿using TwilightImperium4MapGenerator;
+using TwilightImperium4MapGenerator.Models;
 
 //Console.WriteLine("*******************");
 //Console.WriteLine("****** All Systems");
@@ -35,8 +36,8 @@
 //        Console.WriteLine("{0} {1} - {2}", system.GetValue().ToString("0.000"), system.Id, system.GetName());
 //}
 
-string? settings = null;
-while (settings is null)
+Galaxy? galaxy = null;
+while (galaxy is null)
 {
     var spacingSystems = SystemFactory.GetSpacingSystems();
     spacingSystems.Shuffle();
@@ -44,13 +45,14 @@ while (settings is null)
     var planetarySystems = SystemFactory.GetPlanetarySystems();
     planetarySystems.Sort();
 
-    settings = GalaxyFactory.Get8PlayerGalaxy(planetarySystems, spacingSystems);
+    galaxy = GalaxyFactory.Get8PlayerGalaxy(planetarySystems, spacingSystems);
 
-    if (settings is null)
+    if (galaxy is null)
     {
         Console.WriteLine("Not enough resources, trying again...");
         Console.WriteLine();
     }
 }
 
-Console.WriteLine("https://keeganw.github.io/ti4" + settings);
+//Console.WriteLine("https://keeganw.github.io/ti4" + settings);
+Console.WriteLine(galaxy.ToString());

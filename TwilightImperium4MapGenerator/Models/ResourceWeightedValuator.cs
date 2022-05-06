@@ -25,7 +25,7 @@ namespace TwilightImperium4MapGenerator.Models
                 //Get value of tech bonuses
                 if (planet.TechBonus != TechBonus.None)
                 {
-                    switch (planet.Resource) {
+                    switch (Math.Max(planet.Resource, planet.Influence)) {
                         case >= 3:
                             value += 1.0 / 3.0;
                             break;
